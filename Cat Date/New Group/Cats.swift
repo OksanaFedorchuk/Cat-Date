@@ -10,16 +10,16 @@ import Foundation
 
 struct Cats: Codable {
     
-    struct Cat: Codable {
-        
-        var name: String
-        var origin: String
-        var temperament: String
-        var description: String
-        var wikipediaURL: URL
-        
-    }
-    
-    var catsArray: [Cat]
-    
+    var url: String
+    var breed: Breed
 }
+
+struct Breed: Codable {
+    
+    var id: String
+    var name: String
+    var temperament: String
+    var description: String
+    var wikipedia_url: URL
+}
+
