@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ViewController1: UIViewController, DataDelegate {
-  
+class ViewController1: UIViewController {
+    
     @IBOutlet weak var invitationLabel: UILabel!
     @IBOutlet weak var catImage1: UIImageView!
     @IBOutlet weak var dislikeButton: UIButton!
@@ -22,28 +22,31 @@ class ViewController1: UIViewController, DataDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         session.getData()
+        setImage()
+        
         self.invitationLabel.text = self.session.catBreed
-        
-        
-        
-//        invitationLabel.text = catDescription
-        //get data and update: label, image
-        
-        // Do any additional setup after loading the view.
     }
     
-        func didReceiveCatData(_ cat: [Cat]) {
-            catDescription = cat.first?.breeds.first?.name
-    
-          }
+    func setImage() {
+        guard let imageURL = session.catImageURL else { return }
+        
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: imageURL) else { return }
+            
+            let image = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                self.catImage1.image = image
+            }
+        }
+    }
     
     @IBAction func dislikeTapped(_ sender: Any) {
     }
     
     @IBAction func likeTapped(_ sender: Any) {
         session.getData()
+        setImage()
         invitationLabel.text = session.catBreed
-//        catImage1.image = session.catImage
         
     }
     
