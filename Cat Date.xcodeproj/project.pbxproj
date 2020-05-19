@@ -13,7 +13,7 @@
 		1878173A245AF3B5009BDC9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18781738245AF3B5009BDC9A /* Main.storyboard */; };
 		1878173C245AF3BB009BDC9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1878173B245AF3BB009BDC9A /* Assets.xcassets */; };
 		1878173F245AF3BB009BDC9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1878173D245AF3BB009BDC9A /* LaunchScreen.storyboard */; };
-		187817472461AE97009BDC9A /* Cats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187817462461AE97009BDC9A /* Cats.swift */; };
+		187817472461AE97009BDC9A /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187817462461AE97009BDC9A /* Cat.swift */; };
 		1878174C24693CA4009BDC9A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878174B24693CA4009BDC9A /* Session.swift */; };
 		1878174E246AC260009BDC9A /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878174D246AC260009BDC9A /* ViewController2.swift */; };
 		18781750246AEC6B009BDC9A /* BreedIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878174F246AEC6B009BDC9A /* BreedIDs.swift */; };
@@ -28,7 +28,7 @@
 		1878173B245AF3BB009BDC9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1878173E245AF3BB009BDC9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18781740245AF3BB009BDC9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		187817462461AE97009BDC9A /* Cats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Cats.swift; path = "../New Group/Cats.swift"; sourceTree = "<group>"; };
+		187817462461AE97009BDC9A /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Cat.swift; path = "../New Group/Cat.swift"; sourceTree = "<group>"; };
 		1878174B24693CA4009BDC9A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		1878174D246AC260009BDC9A /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		1878174F246AEC6B009BDC9A /* BreedIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedIDs.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		1878174824693AFA009BDC9A /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				187817462461AE97009BDC9A /* Cats.swift */,
+				187817462461AE97009BDC9A /* Cat.swift */,
 				1878174F246AEC6B009BDC9A /* BreedIDs.swift */,
 			);
 			path = "Data Model";
@@ -177,7 +177,7 @@
 			files = (
 				1878174C24693CA4009BDC9A /* Session.swift in Sources */,
 				18781737245AF3B5009BDC9A /* ViewController1.swift in Sources */,
-				187817472461AE97009BDC9A /* Cats.swift in Sources */,
+				187817472461AE97009BDC9A /* Cat.swift in Sources */,
 				18781733245AF3B5009BDC9A /* AppDelegate.swift in Sources */,
 				18781750246AEC6B009BDC9A /* BreedIDs.swift in Sources */,
 				18781735245AF3B5009BDC9A /* SceneDelegate.swift in Sources */,

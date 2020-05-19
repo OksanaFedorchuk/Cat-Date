@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct Cats: Codable {
+struct Cat: Codable {
     
-    var url: String
-    var breed: Breed
+    var url: URL
+    var breeds: [Breed]
 }
 
 struct Breed: Codable {
