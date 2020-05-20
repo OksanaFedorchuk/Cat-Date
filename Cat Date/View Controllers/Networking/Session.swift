@@ -7,13 +7,13 @@
 //
 
 import Foundation
-
+import UIKit
 
 class Session {
     
     let session = URLSession.shared
-    var catBreed: String = ""
-    var catImageURL = URL(string: "")
+//    var catBreed: String = ""
+//    var catImageURL = URL(string: "")
     
     let catArray: [String] = ["abys", "aege", "abob", "acur", "asho", "awir", "amau", "amis", "bali", "bamb", "beng", "birm", "bomb", "bslo", "bsho", "bure", "buri", "cspa", "ctif", "char", "chau", "chee", "csho", "crex", "cymr", "cypr", "drex", "dons", "lihu", "emau", "ebur", "esho", "hbro", "hima", "jbob", "java", "khao", "kora", "kuri", "lape", "mcoo", "mala", "manx", "munc", "nebe", "norw", "ocic", "orie", "pers", "pixi", "raga", "ragd", "rblu", "sava", "sfol", "srex", "siam", "sibe", "sing", "snow", "soma", "sphy", "tonk", "toyg", "tang", "tvan"]
     
@@ -26,7 +26,7 @@ class Session {
         return resourceString
     }
     
-    func getData () {
+    func getDataWith(completion: @escaping (([Cat]) -> Void)) {
         
         
         guard let url = URL(string: "\(getRandomCat())") else {
@@ -41,11 +41,9 @@ class Session {
             if let data = data {
                 do {
                     let cats = try JSONDecoder().decode([Cat].self, from: data)
-                    self.catBreed = cats.first?.breeds.first?.name as! String
-                    self.catImageURL = cats.first?.url
-                    print(cats.first?.breeds.first?.name)
+                    completion(cats)
                 } catch {
-                    print(error)
+                    completion([])
                 }
             }
         }.resume()
