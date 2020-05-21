@@ -10,21 +10,25 @@ import UIKit
 
 class CatMatchViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var invitationLabel: UILabel!
     @IBOutlet weak var catImage1: UIImageView!
     @IBOutlet weak var dislikeButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     
+    // MARK: - Constants and Variables
     
     let session = Session()
-    var catDescription: String? = ""
     var likedCat: Cat?
+    
+    // MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
-        invitationLabel.text = "Like or Not Really?"
-//        self.invitationLabel.text = self.session.catBreed
+        invitationLabel.text = "WILL YOU BE MY MATCH?"
+        
     }
     
     // MARK: - Image Methods
@@ -42,11 +46,25 @@ class CatMatchViewController: UIViewController {
         }
     }
     
+    func getData() {
+        
+        session.getDataWith { [weak self] cats in
+            self?.likedCat = cats.first
+            let catImageURL = cats.first?.url
+            DispatchQueue.main.async {
+                self?.setImage(catImageURL)
+            }
+        }
+    }
+
+    
+    // MARK: - Getting a Cat Match
+    
     func catLikeGenerator() -> Int {
         let catLike = [0, 1]
         let randomLike = catLike.randomElement()
         return randomLike!
-        }
+    }
     
     @IBAction func dislikeTapped(_ sender: Any) {
         getData()
@@ -62,6 +80,8 @@ class CatMatchViewController: UIViewController {
         }
     }
     
+    // MARK: - Segue
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMatch" {
             let catDetails = segue.destination as? CatDetailsViewController
@@ -69,14 +89,8 @@ class CatMatchViewController: UIViewController {
         }
     }
     
-    func getData() {
-        
-        session.getDataWith { [weak self] cats in
-            self?.likedCat = cats.first
-            let catImageURL = cats.first?.url
-            DispatchQueue.main.async {
-                self?.setImage(catImageURL)
-            }
-        }
+    override func viewDidDisappear(_ animated: Bool) {
+        getData()
     }
+    
 }

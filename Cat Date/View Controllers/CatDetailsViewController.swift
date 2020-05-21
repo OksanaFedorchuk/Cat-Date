@@ -10,38 +10,57 @@ import UIKit
 
 class CatDetailsViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var matchLabel: UILabel!
     @IBOutlet weak var matchCatImage: UIImageView!
     @IBOutlet weak var temperamentLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var wikiLabel: UILabel!
-    @IBOutlet weak var againButton: UIButton!
+    
+    // MARK: - Constants and Variables
     
     var likedCat: Cat?
     let session = Session()
     
+    // MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        session.getDataWith { [weak self] likedCat in
-//            let catImageURL = likedCat.first?.url
-//            DispatchQueue.main.async {
-////                self?.setImage(catImageURL)
- 
+        setImage()
+        
         matchLabel.text = "IT'S A MATCH! \n You and \(String(likedCat!.breeds.first!.name)) have liked each other!"
         
         temperamentLabel.text = likedCat?.breeds.first?.temperament
         descriptionLabel.text = likedCat?.breeds.first?.description
-//        wikiLabel.text = likedCat?.breeds.first?.wikipedia_url
     }
     
+     // MARK: - Button Actions
     
-    
-    @IBAction func againButtonTapped(_ sender: Any) {
+    @IBAction func learnMoreButtonTapped(_ sender: Any) {
+        UIApplication.shared.open(likedCat!.breeds.first!.wikipedia_url as URL, completionHandler: nil)
     }
     
+    @IBAction func getAnotherButtonTapped(_ sender: Any) {
+        
+        dismiss(animated: true) {
+
+        }
+        
+    }
     
+    // MARK: - Image Methods
     
-    
-    
+    func setImage() {
+        guard let imageURL = likedCat?.url else { return }
+        
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: imageURL) else { return }
+            
+            let image = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                self.matchCatImage.image = image
+            }
+        }
+    }
 }
