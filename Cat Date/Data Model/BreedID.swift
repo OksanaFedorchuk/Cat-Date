@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct BreedID: Codable {    
+    var id: String
+}

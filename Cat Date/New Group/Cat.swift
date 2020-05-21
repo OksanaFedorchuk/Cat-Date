@@ -9,7 +9,6 @@
 import Foundation
 
 struct Cat: Codable {
-    
     var url: URL
     var breeds: [Breed]
 }

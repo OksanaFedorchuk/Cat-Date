@@ -19,17 +19,48 @@ class CatMatchViewController: UIViewController {
     
     // MARK: - Constants and Variables
     
-    let session = Session()
-    var likedCat: Cat?
+    let session = SessionManager()
+    var currentCat: Cat?
     
-    // MARK: - ViewDidLoad
+    // MARK: - View
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData()
+        updateCat()
         invitationLabel.text = "WILL YOU BE MY MATCH?"
-        
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        updateCat()
+    }
+    
+    @IBAction func dislikeTapped(_ sender: Any) {
+        updateCat()
+    }
+    
+    @IBAction func likeTapped(_ sender: Any) {
+        
+        if catLikeGenerator() == 1 {
+            performSegue(withIdentifier: "goToMatch", sender: Any?.self)
+            
+        } else {
+            updateCat()
+        }
+    }
+    
+    // MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToMatch" {
+            let catDetails = segue.destination as? CatDetailsViewController
+            catDetails?.likedCat = currentCat
+        }
+    }
+    
+    
+}
+
+private extension CatMatchViewController {
     
     // MARK: - Image Methods
     
@@ -46,51 +77,23 @@ class CatMatchViewController: UIViewController {
         }
     }
     
-    func getData() {
-        
-        session.getDataWith { [weak self] cats in
-            self?.likedCat = cats.first
-            let catImageURL = cats.first?.url
+    func updateCat() {
+        session.getCat { [weak self] cat in
+            self?.currentCat = cat
+            let catImageURL = cat?.url
             DispatchQueue.main.async {
                 self?.setImage(catImageURL)
             }
         }
     }
-
     
-    // MARK: - Getting a Cat Match
+    
+    // MARK: - Helpers
     
     func catLikeGenerator() -> Int {
         let catLike = [0, 1]
         let randomLike = catLike.randomElement()
         return randomLike!
-    }
-    
-    @IBAction func dislikeTapped(_ sender: Any) {
-        getData()
-    }
-    
-    @IBAction func likeTapped(_ sender: Any) {
-        
-        if catLikeGenerator() == 1 {
-            performSegue(withIdentifier: "goToMatch", sender: Any?.self)
-            
-        } else {
-            getData()
-        }
-    }
-    
-    // MARK: - Segue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToMatch" {
-            let catDetails = segue.destination as? CatDetailsViewController
-            catDetails?.likedCat = likedCat
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        getData()
     }
     
 }

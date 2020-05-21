@@ -20,7 +20,7 @@ class CatDetailsViewController: UIViewController {
     // MARK: - Constants and Variables
     
     var likedCat: Cat?
-    let session = Session()
+    let session = SessionManager()
     
     // MARK: - ViewDidLoad
     
@@ -35,7 +35,7 @@ class CatDetailsViewController: UIViewController {
         descriptionLabel.text = likedCat?.breeds.first?.description
     }
     
-     // MARK: - Button Actions
+    // MARK: - Button Actions
     
     @IBAction func learnMoreButtonTapped(_ sender: Any) {
         UIApplication.shared.open(likedCat!.breeds.first!.wikipedia_url as URL, completionHandler: nil)
@@ -43,15 +43,13 @@ class CatDetailsViewController: UIViewController {
     
     @IBAction func getAnotherButtonTapped(_ sender: Any) {
         
-        dismiss(animated: true) {
-
-        }
+        dismiss(animated: true)
         
     }
     
     // MARK: - Image Methods
     
-    func setImage() {
+    private func setImage() {
         guard let imageURL = likedCat?.url else { return }
         
         DispatchQueue.global().async {
