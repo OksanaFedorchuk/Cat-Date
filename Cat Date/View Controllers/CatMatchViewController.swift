@@ -21,11 +21,13 @@ class CatMatchViewController: UIViewController {
     
     let session = SessionManager()
     var currentCat: Cat?
+    var imageIsReady: Bool = false
     
     // MARK: - View
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkIfImageReady()
         updateCat()
         invitationLabel.text = "WILL YOU BE MY MATCH?"
     }
@@ -36,13 +38,13 @@ class CatMatchViewController: UIViewController {
     
     @IBAction func dislikeTapped(_ sender: Any) {
         updateCat()
+        checkIfImageReady()
     }
     
     @IBAction func likeTapped(_ sender: Any) {
-        
+        checkIfImageReady()
         if catLikeGenerator() == 1 {
             performSegue(withIdentifier: "goToMatch", sender: Any?.self)
-            
         } else {
             updateCat()
         }
@@ -56,8 +58,6 @@ class CatMatchViewController: UIViewController {
             catDetails?.likedCat = currentCat
         }
     }
-    
-    
 }
 
 private extension CatMatchViewController {
@@ -65,6 +65,8 @@ private extension CatMatchViewController {
     // MARK: - Image Methods
     
     func setImage(_ url: URL?) {
+        
+        
         guard let imageURL = url else { return }
         
         DispatchQueue.global().async {
@@ -73,11 +75,14 @@ private extension CatMatchViewController {
             let image = UIImage(data: imageData)
             DispatchQueue.main.async {
                 self.catImage1.image = image
+                self.imageIsReady = true
+                self.checkIfImageReady()
             }
         }
     }
     
     func updateCat() {
+        imageIsReady = false
         session.getCat { [weak self] cat in
             self?.currentCat = cat
             let catImageURL = cat?.url
@@ -90,10 +95,22 @@ private extension CatMatchViewController {
     
     // MARK: - Helpers
     
+    func checkIfImageReady() {
+        DispatchQueue.main.async {
+            if self.imageIsReady == true {
+                self.likeButton.isEnabled = true
+                self.dislikeButton.isEnabled = true
+            }
+            else {
+                self.likeButton.isEnabled = false
+                self.dislikeButton.isEnabled = false
+            }
+        }
+    }
+    
     func catLikeGenerator() -> Int {
         let catLike = [0, 1]
         let randomLike = catLike.randomElement()
         return randomLike!
     }
-    
 }
