@@ -1,6 +1,6 @@
 # Cat-Date
 
-A Tinder-like game to learn about cat breeds fun and easy! Like or dislike a cat, and if the cat likes you back, you get a match with some important information to go on that epic cat date. <3
+A Tinder-like game to learn about cat breeds fun and easy! Like or dislike a cat, and if the cat likes you back, you get a match with some important information to go on that epic cat date. <3 See wiki info if it's not enough info, or try to get another match it you change your mind ;)
 
 Screen1 | Screen2
 ------------ | -------------
