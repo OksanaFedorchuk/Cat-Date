@@ -29,7 +29,7 @@ class CatMatchViewController: UIViewController {
         super.viewDidLoad()
         checkIfImageReady()
         updateCat()
-        invitationLabel.text = "WILL YOU BE MY MATCH?"
+        invitationLabel.text = K.invitationLabelText
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -44,7 +44,7 @@ class CatMatchViewController: UIViewController {
     @IBAction func likeTapped(_ sender: Any) {
         checkIfImageReady()
         if catLikeGenerator() == 1 {
-            performSegue(withIdentifier: "goToMatch", sender: Any?.self)
+            performSegue(withIdentifier: K.seque, sender: Any?.self)
         } else {
             updateCat()
         }
@@ -53,7 +53,7 @@ class CatMatchViewController: UIViewController {
     // MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToMatch" {
+        if segue.identifier == K.seque {
             let catDetails = segue.destination as? CatDetailsViewController
             catDetails?.likedCat = currentCat
         }

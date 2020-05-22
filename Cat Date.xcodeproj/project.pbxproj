@@ -17,6 +17,7 @@
 		1878174C24693CA4009BDC9A /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878174B24693CA4009BDC9A /* SessionManager.swift */; };
 		1878174E246AC260009BDC9A /* CatDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878174D246AC260009BDC9A /* CatDetailsViewController.swift */; };
 		18781750246AEC6B009BDC9A /* BreedID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878174F246AEC6B009BDC9A /* BreedID.swift */; };
+		18B927F22477F030005E7120 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B927F12477F030005E7120 /* K.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1878174B24693CA4009BDC9A /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		1878174D246AC260009BDC9A /* CatDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsViewController.swift; sourceTree = "<group>"; };
 		1878174F246AEC6B009BDC9A /* BreedID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedID.swift; sourceTree = "<group>"; };
+		18B927F12477F030005E7120 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				1878174824693AFA009BDC9A /* Data Model */,
 				1878174924693B26009BDC9A /* View Controllers */,
 				1878174A24693B52009BDC9A /* Networking */,
+				18B927F12477F030005E7120 /* K.swift */,
 				18781738245AF3B5009BDC9A /* Main.storyboard */,
 				1878173B245AF3BB009BDC9A /* Assets.xcassets */,
 				1878173D245AF3BB009BDC9A /* LaunchScreen.storyboard */,
@@ -180,6 +183,7 @@
 				187817472461AE97009BDC9A /* Cat.swift in Sources */,
 				18781733245AF3B5009BDC9A /* AppDelegate.swift in Sources */,
 				18781750246AEC6B009BDC9A /* BreedID.swift in Sources */,
+				18B927F22477F030005E7120 /* K.swift in Sources */,
 				18781735245AF3B5009BDC9A /* SceneDelegate.swift in Sources */,
 				1878174E246AC260009BDC9A /* CatDetailsViewController.swift in Sources */,
 			);

@@ -27,7 +27,7 @@ class SessionManager {
         var requestIDs = URLRequest(url: idURL)
         requestIDs.httpMethod = HTTPMethod.GET.rawValue
         
-        requestIDs.addValue("a4f188d4-b187-40c8-820f-fd4ca898885e", forHTTPHeaderField: "x-api-key")
+        requestIDs.addValue(K.APIkey, forHTTPHeaderField: K.HTTPHeaderField)
         session.dataTask(with: requestIDs) { (data, response, error) in
             if let data = data {
                 do {
@@ -55,11 +55,11 @@ class SessionManager {
         
         getRandomCatImageURL { [weak self] url in
             guard let url = URL(string: "\(url)") else {
-                fatalError("Error getting a cat breed URL")
+                fatalError("Error getting a cat URL")
             }
             var request = URLRequest(url: url)
             request.httpMethod = HTTPMethod.GET.rawValue
-            request.addValue("a4f188d4-b187-40c8-820f-fd4ca898885e", forHTTPHeaderField: "x-api-key")
+            request.addValue(K.APIkey, forHTTPHeaderField: K.HTTPHeaderField)
             
             self?.session.dataTask(with: request) { (data, response, error) in
                 

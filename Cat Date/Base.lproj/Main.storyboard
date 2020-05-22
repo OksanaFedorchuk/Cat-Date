@@ -164,7 +164,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ib6-dF-JfA">
                                                 <rect key="frame" x="0.0" y="29" width="180" height="23.333333333333329"/>
-                                                <color key="backgroundColor" red="0.85151368380000003" green="0.35013678669999998" blue="0.27230376010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.85950404410000003" green="0.34627169369999999" blue="0.24989199640000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="GET ANOTHER MATCH">
                                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
